@@ -4,40 +4,45 @@ import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Employee[] employee = new Employee[10];
-        employee[0] = new Employee("Петров Петр Петрович", 4, 60000);
-        employee[1] = new Employee("Иванов Иван Иванович", 1, 70000);
-        employee[2] = new Employee("Сидоров Сергей Сергеевич", 5, 50000);
-        employee[3] = new Employee("Ветров Алексей Алексеевич", 3, 40000);
-        employee[4] = new Employee("Умнов Виктор Викторович", 2, 80000);
-        employee[5] = new Employee("Комаров Александр Александрович", 4, 35000);
-        employee[6] = new Employee("Косов Иван Алексеевич", 4, 45000);
-        employee[7] = new Employee("Трудов Михаил Михайлович", 2, 47000);
-        employee[8] = new Employee("Копнов Спиридон Олегович", 1, 38000);
-        employee[9] = new Employee("Кнопов Олег Юрьевич", 5, 200000);
+        static Employee[] employee = new Employee[10];
+
+
+     public static void main(String[] args) {
+
+         employee[0] = new Employee("Петров Петр Петрович", 4, 60000);
+         employee[1] = new Employee("Иванов Иван Иванович", 1, 70000);
+         employee[2] = new Employee("Сидоров Сергей Сергеевич", 5, 50000);
+         employee[3] = new Employee("Ветров Алексей Алексеевич", 3, 40000);
+         employee[4] = new Employee("Умнов Виктор Викторович", 2, 80000);
+         employee[5] = new Employee("Комаров Александр Александрович", 4, 35000);
+         employee[6] = new Employee("Косов Иван Алексеевич", 4, 45000);
+         employee[7] = new Employee("Трудов Михаил Михайлович", 2, 47000);
+         employee[8] = new Employee("Копнов Спиридон Олегович", 1, 38000);
+         employee[9] = new Employee("Кнопов Олег Юрьевич", 5, 200000);
+
+
 
         System.out.println(Arrays.toString(employee));
-        sumSalaryMonth(employee);
+        System.out.println("\nСумма затрат на зарплаты в месяц = " + sumSalaryMonth(employee) + "руб.");
         minSalary(employee);
         maxSalary(employee);
+        System.out.println("\nСредняя зарплата сотрудников = " + averageSalary(employee) + "руб.");
         print(employee);
-
 
 
 
     }
 
-    public static void sumSalaryMonth (Employee[] employee) {
+    static int sumSalaryMonth (Employee[] employee) {
+
         int sum = 0;
          for (Employee value : employee) {
              sum = sum + value.getSalary();
          }
-        System.out.println("\nСумма затрат на зарплаты в месяц = " + sum + "руб."+
-                "\n\nСредняя зарплата сотрудника в месяц = " + sum / employee.length + "руб.");
+         return sum;
      }
 
-     public static void minSalary (Employee[] employees) {
+      static void minSalary (Employee[] employees) {
          int min = employees[0].getSalary();
          String pureNew = null;
          for (Employee employee : employees) {
@@ -50,7 +55,7 @@ public class Main {
                  ". Получает - "+ min + " руб.");
      }
 
-    public static void maxSalary (Employee[] employees) {
+     static void maxSalary (Employee[] employees) {
         int max = employees[0].getSalary();
         String richNew = null;
         for (Employee employee : employees) {
@@ -63,8 +68,14 @@ public class Main {
                 ". Получает - "+ max + " руб.");
     }
 
+    static int averageSalary (Employee[] employees) {
+         int aver = sumSalaryMonth(employees)/employees.length;
+         return aver;
 
-    public static void print (Employee[] employees)  {
+    }
+
+
+     static void print (Employee[] employees)  {
         System.out.println("\nПолный список ФИО Сотрудников:");
         for (Employee employee: employees) {
             System.out.println(employee.getName());
